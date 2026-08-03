@@ -1,7 +1,10 @@
 # Greek InterVarsity at SDSU — website
 
-A self-contained static rebuild of [greekivatsdsu.org](https://www.greekivatsdsu.org),
-recreated from the live Wix site as plain HTML and CSS.
+**Live at [greekivsdsu.org](https://greekivsdsu.org)** — hosted free on GitHub
+Pages, with DNS managed by Cloudflare.
+
+A self-contained static rebuild of [greekivatsdsu.org](https://www.greekivatsdsu.org)
+(the old Wix site), recreated as plain HTML and CSS.
 
 No build step, no framework, no Wix. Open `index.html` in a browser and it works.
 Every photo is stored in `images/`, so nothing depends on Wix's servers staying up.
@@ -103,14 +106,35 @@ Content that will need updating over time:
 - Funding goal figures and charts — `partner-with-us.html`, `images/funding-*.jpg`
 - The copyright year in the footer of every page
 
-## Publishing
+## Hosting
 
-Any static host will serve this as-is:
+The site is served by **GitHub Pages** from the `main` branch. Any push to `main`
+redeploys it automatically, usually within a minute.
 
-- **GitHub Pages** — repository Settings → Pages → deploy from the `main` branch.
-  Free public hosting; the repository must be public.
-- **Netlify or Vercel** — connect the repository, no build command, publish the
-  root directory.
+The `CNAME` file in the repository root holds the custom domain. Don't delete it —
+GitHub reads that file to know which domain to serve, and removing it takes the
+site off `greekivsdsu.org`.
+
+### DNS (Cloudflare)
+
+`greekivsdsu.org` is registered at Cloudflare and points at GitHub's servers:
+
+| Type  | Name  | Value                         | Proxy    |
+| ----- | ----- | ----------------------------- | -------- |
+| A     | `@`   | `185.199.108.153`             | DNS only |
+| A     | `@`   | `185.199.109.153`             | DNS only |
+| A     | `@`   | `185.199.110.153`             | DNS only |
+| A     | `@`   | `185.199.111.153`             | DNS only |
+| CNAME | `www` | `cornertocity-boop.github.io` | DNS only |
+
+**Leave these on "DNS only" (grey cloud), not "Proxied" (orange cloud).** With
+Cloudflare's proxy switched on, GitHub can't renew the HTTPS certificate and the
+site eventually starts showing security warnings. Cloudflare will keep
+recommending you enable proxying — ignore it, or the site will break at renewal
+time.
+
+The old Wix domain, `greekivatsdsu.org`, is untouched and still serves the Wix
+site. Point it here (or redirect it) whenever you're ready to retire Wix.
 
 ## Photos
 
