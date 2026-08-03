@@ -259,6 +259,9 @@ a { color: inherit; }
   color: var(--navy-soft);
   margin-bottom: 14px;
 }
+.program__title-link { text-decoration: none; }
+.program__title-link:hover,
+.program__title-link:focus-visible { text-decoration: underline; }
 .program__row {
   display: grid;
   grid-template-columns: 600fr 340fr;
@@ -267,6 +270,7 @@ a { color: inherit; }
 }
 .program__row img { width: 100%; aspect-ratio: 600 / 273; object-fit: cover; }
 .program__row p { margin: 0; font-weight: 500; line-height: 1.45; }
+.program__text .btn { margin-top: 18px; }
 
 /* Reversed row: heading and copy right-aligned, image on the right. */
 .program--flip .program__title { text-align: right; }
@@ -302,6 +306,9 @@ a { color: inherit; }
   max-width: 568px;
   margin: 22px auto 8px;
 }
+/* Breathing room above the heading when linked to directly, e.g. from
+   the Chapter Ministries card on the Programs page. */
+#chapter-ministries { scroll-margin-top: 24px; }
 .chapters-intro {
   max-width: 568px;
   margin: 0 auto 18px;
